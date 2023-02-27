@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+
+    <style>
+        body {
+            margin: 0;
+        }
+
+        .hidden {
+            display: none;
+        }
+
+        img {
+            max-width: 90vw;
+            max-height: 90vh;
+        }
+
+        .container {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            width: 100vw;
+            height: 100vh;
+        }
+
+        .blue {
+            background-color: hsl(236deg 47% 51%);
+        }
+
+        .green {
+            background-color: hsl(129deg 50% 49%);
+        }
+
+        .red {
+            background-color: hsl(358deg 51% 48%);
+        }
+    </style>
+
+    <div class="container blue">
+        <img id="blue10" src="Render Square blue/0010.png" class="">
+        <img id="blue11" src="Render Square blue/0011.png" class="hidden">
+        <img id="blue12" src="Render Square blue/0012.png" class="hidden">
+        <img id="blue13" src="Render Square blue/0013.png" class="hidden">
+        <img id="blue14" src="Render Square blue/0014.png" class="hidden">
+        <img id="blue15" src="Render Square blue/0015.png" class="hidden">
+        <img id="blue16" src="Render Square blue/0016.png" class="hidden">
+        <img id="blue17" src="Render Square blue/0017.png" class="hidden">
+        <img id="blue18" src="Render Square blue/0018.png" class="hidden">
+        <img id="blue19" src="Render Square blue/0019.png" class="hidden">
+        <img id="blue20" src="Render Square blue/0020.png" class="hidden">
+
+        <img id="green10" src="Render Square green/0010.png" class="hidden">
+        <img id="green11" src="Render Square green/0011.png" class="hidden">
+        <img id="green12" src="Render Square green/0012.png" class="hidden">
+        <img id="green13" src="Render Square green/0013.png" class="hidden">
+        <img id="green14" src="Render Square green/0014.png" class="hidden">
+        <img id="green15" src="Render Square green/0015.png" class="hidden">
+        <img id="green16" src="Render Square green/0016.png" class="hidden">
+        <img id="green17" src="Render Square green/0017.png" class="hidden">
+        <img id="green18" src="Render Square green/0018.png" class="hidden">
+        <img id="green19" src="Render Square green/0019.png" class="hidden">
+        <img id="green20" src="Render Square green/0020.png" class="hidden">
+
+        <img id="red10" src="Render Square red/0010.png" class="hidden">
+        <img id="red11" src="Render Square red/0011.png" class="hidden">
+        <img id="red12" src="Render Square red/0012.png" class="hidden">
+        <img id="red13" src="Render Square red/0013.png" class="hidden">
+        <img id="red14" src="Render Square red/0014.png" class="hidden">
+        <img id="red15" src="Render Square red/0015.png" class="hidden">
+        <img id="red16" src="Render Square red/0016.png" class="hidden">
+        <img id="red17" src="Render Square red/0017.png" class="hidden">
+        <img id="red18" src="Render Square red/0018.png" class="hidden">
+        <img id="red19" src="Render Square red/0019.png" class="hidden">
+        <img id="red20" src="Render Square red/0020.png" class="hidden">
+    </div>
+
+
+    <script>
+
+        let colorIndex = 0
+        const colors = [
+            'blue',
+            // 'green',
+            'red'
+        ]
+
+        function playAnimation(i) {
+            const imageSource = colors[colorIndex]
+            // console.log(i)
+            document.querySelector(`#${imageSource}${i}`).classList.add('hidden')
+            document.querySelector(`#${imageSource}${i + 1}`).classList.remove('hidden')
+            if (i < 19) {
+                setTimeout(() => {
+                    playAnimation(i + 1)
+                }, 1000 / 24)
+            } else {
+                colorIndex = (colorIndex + 1) % colors.length
+                const nextImageSource = colors[colorIndex]
+                document.querySelector(`#${imageSource}${i + 1}`).classList.add('hidden')
+                document.querySelector(`#${nextImageSource}10`).classList.remove('hidden')
+                document.querySelector(`.container`).classList.remove(imageSource)
+                document.querySelector(`.container`).classList.add(nextImageSource)
+            }
+        }
+
+        document.addEventListener('click', () => {
+            playAnimation(10)
+        })
+    </script>
+
+</body>
+
+</html>

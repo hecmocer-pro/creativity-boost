@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+
+    <style>
+        .hidden {
+            display: none;
+        }
+    </style>
+
+    <img id="blue10" src="Render Blue/blue (10).png" class="">
+    <img id="blue11" src="Render Blue/blue (11).png" class="hidden">
+    <img id="blue12" src="Render Blue/blue (12).png" class="hidden">
+    <img id="blue13" src="Render Blue/blue (13).png" class="hidden">
+    <img id="blue14" src="Render Blue/blue (14).png" class="hidden">
+    <img id="blue15" src="Render Blue/blue (15).png" class="hidden">
+    <img id="blue16" src="Render Blue/blue (16).png" class="hidden">
+    <img id="blue17" src="Render Blue/blue (17).png" class="hidden">
+    <img id="blue18" src="Render Blue/blue (18).png" class="hidden">
+    <img id="blue19" src="Render Blue/blue (19).png" class="hidden">
+    <img id="blue20" src="Render Blue/blue (20).png" class="hidden">
+
+    <img id="green10" src="Render Green/green (10).png" class="hidden">
+    <img id="green11" src="Render Green/green (11).png" class="hidden">
+    <img id="green12" src="Render Green/green (12).png" class="hidden">
+    <img id="green13" src="Render Green/green (13).png" class="hidden">
+    <img id="green14" src="Render Green/green (14).png" class="hidden">
+    <img id="green15" src="Render Green/green (15).png" class="hidden">
+    <img id="green16" src="Render Green/green (16).png" class="hidden">
+    <img id="green17" src="Render Green/green (17).png" class="hidden">
+    <img id="green18" src="Render Green/green (18).png" class="hidden">
+    <img id="green19" src="Render Green/green (19).png" class="hidden">
+    <img id="green20" src="Render Green/green (20).png" class="hidden">
+
+    <script>
+
+        let isBlueToGreen = true
+
+        function playAnimation(i) {
+            const imageSource = isBlueToGreen ? 'blue' : 'green'
+            // console.log(i)
+            document.querySelector(`#${imageSource}${i}`).classList.add('hidden')
+            document.querySelector(`#${imageSource}${i + 1}`).classList.remove('hidden')
+            if (i < 19) {
+                setTimeout(() => {
+                    playAnimation(i + 1)
+                }, 1000 / 24)
+            } else {
+                const alternativeImageSource = !isBlueToGreen ? 'blue' : 'green'
+                isBlueToGreen = !isBlueToGreen
+                document.querySelector(`#${imageSource}${i + 1}`).classList.add('hidden')
+                document.querySelector(`#${alternativeImageSource}10`).classList.remove('hidden')
+            }
+        }
+
+        document.addEventListener('click', () => {
+            playAnimation(10)
+        })
+    </script>
+
+</body>
+
+</html>
